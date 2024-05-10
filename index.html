@@ -10,38 +10,36 @@
         <link rel="stylesheet" href="assets/fontawesome/css/brands.css">
         <link rel="stylesheet" href="assets/fontawesome/css/solid.css">
     </head>
-    <body>
+    <body onscroll="scroll()">
+        <div class="whatsapp-fixed">
+            <a href="https://api.whatsapp.com/send?phone=5547988596472&text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank">
+                <img src="assets/images/whatsapp.png" alt="Logo do whatsapp">
+            </a>
+        </div>
+
+        <div class="top-fixed">
+            <a href="" onclick="event.preventDefault()" id="top">
+                <img src="assets/images/arrow.png" alt="Seta">
+            </a>
+        </div>
         <header>
             <nav>
                 <img src="assets/images/logo.png" alt="Logo da Empresa">
                 <ul>
                     <li>
-                        <a href="">Sobre Nós</a>
+                        <a href="#about">Sobre Nós</a>
                     </li>
                     <li>
-                        <a href="">Estrutura</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="">Soluções</a>
-                        <!-- <div class="dropdown-box">
-                            <ul>
-                                <li>
-                                    <a href="">Armazém</a>
-                                </li>
-                                <li>
-                                    <a href="">Terminal</a>
-                                </li>
-                                <li>
-                                    <a href="">Transporte</a>
-                                </li>
-                            </ul>
-                        </div> -->
+                        <a href="#structure">Estruturas</a>
                     </li>
                     <li>
-                        <a href="">Contato</a>
+                        <a href="#services">Soluções</a>
                     </li>
                     <li>
-                        <a href="">Trabalhe Conosco</a>
+                        <a href="#contact" id="btnQuestion">Contatos</a>
+                    </li>
+                    <li>
+                        <a href="#contact" id="btnCurriculo">Trabalhe Conosco</a>
                     </li>
                 </ul>
                 <div class="language">
@@ -136,7 +134,7 @@
             </section>
             <section id="structure">
                 <div class="content">
-                    <h6>Estrutura</h6>
+                    <h6>Estruturas</h6>
                     <div class="box">
                         <div class="structure">
                             <h5>Matriz - Salseiros, Itajaí/SC</h5>
@@ -315,7 +313,217 @@
                     </div>
                 </div>
             </section>
+            <section id="contact">
+                <div class="content">
+                    <h6>Contatos</h6>
+                    <div class="box">
+                        <div class="card-box">
+                            <div class="text">
+                                <h5>Entre em contato</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere felis ac nulla convallis, sit amet facilisis lectus ullamcorper.</p>
+                            </div>
+                            <div class="text">
+                                <h5>E-mail</h5>
+                                <a href="mailto:comercial@arterminais.com.br">comercial@arterminais.com.br</a>
+                            </div>
+                            <div class="text">
+                                <h5>Telefone</h5>
+                                <a href="tel:554734048600">(47) 3404-8600</a>
+                            </div>
+                            <div class="text">
+                                <h5>Redes Sociais</h5>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.instagram.com/arbrasil.operadorlogistico/" target="_blank">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/people/Ar-Terminais/100083366379742/" target="_blank">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/company/ar-brasil-logistica/mycompany/" target="_blank">
+                                            <i class="fa-brands fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone=5547988596472&text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank">
+                                            <i class="fa-brands fa-whatsapp"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-box">
+                            <div class="form">
+                                <div class="buttons">
+                                    <button class="active" id="question">Envie uma mensagem</button>
+                                    <button id="curriculo">Trabalhe Conosco</button>
+                                </div>
+                                <form id="form-contato" method="POST">
+                                    <div>
+                                        <label for="">Nome</label>
+                                        <input type="text" placeholder="Digite o seu nome" id="nome" name="nome">
+                                    </div>
+                                    <div>
+                                        <label for="">E-mail</label>
+                                        <input type="text" placeholder="Digite o seu e-mail" id="email" name="email">
+                                    </div>
+                                    <div>
+                                        <label for="">Telefone</label>
+                                        <input type="text" placeholder="Digite o seu telefone" id="telefone" name="telefone">
+                                    </div>
+                                    <div>
+                                        <label for="">Assunto</label>
+                                        <input type="text" placeholder="Digite o assunto" id="assunto" name="assunto">
+                                    </div>
+                                    <div>
+                                        <label for="">Mensagem</label>
+                                        <textarea type="text" placeholder="Digite a sua mensagem" id="mensagem" name="mensagem" rows="5"></textarea>
+                                    </div>
+                                    <button id="botao" type="submit">Enviar</button>
+                                    <b id="retorno"></b>
+                                </form>
+                                <form id="form-curriculo" method="POST" enctype="multipart/form-data">
+                                    <div>
+                                        <label for="">Nome</label>
+                                        <input type="text" placeholder="Digite o seu nome" id="nome" name="nome">
+                                    </div>
+                                    <div>
+                                        <label for="">E-mail</label>
+                                        <input type="text" placeholder="Digite o seu e-mail" id="email" name="email">
+                                    </div>
+                                    <div>
+                                        <label for="">Telefone</label>
+                                        <input type="text" placeholder="Digite o seu telefone" id="telefone" name="telefone">
+                                    </div>
+                                    <div>
+                                        <label for="">Cargo</label>
+                                        <input type="text" placeholder="Digite o cargo" id="cargo" name="cargo">
+                                    </div>
+                                    <div>
+                                        <label for="">Currículo</label>
+                                        <input type="file" class="file" id="curriculo" name="curriculo">
+                                    </div>
+                                    <button id="botao" type="submit">Enviar</button>
+                                    <b id="retorno"></b>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
+        <footer>
+            <div class="infos">
+                <div class="footer-info">
+                    <h6>AR Brasil</h6>
+                    <ul>
+                        <li>
+                            <a href="#about">Sobre Nós</a>
+                        </li>
+                        <li>
+                            <a href="#structure">Estruturas</a>
+                        </li>
+                        <li>
+                            <a href="#services">Soluções</a>
+                        </li>
+                        <li>
+                            <a href="#contact" id="btnQuestion2">Contatos</a>
+                        </li>
+                        <li>
+                            <a href="#contact" id="btnCurriculo2">Trabalhe Conosco</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h6>Contatos</h6>
+                    <ul>
+                        <li>
+                            <a href="" onclick="event.preventDefault()" class="default">Segunda a Sexta das 07h00 às 20h30</a>
+                        </li>
+                        <li>
+                            <a href="" onclick="event.preventDefault()" class="default">Sábado das 08h00 às 12h00</a>
+                        </li>
+                        <li>
+                            <a href="mailto:comercial@arterminais.com.br" target="_blank">E-mail: comercial@arterminais.com.br</a>
+                        </li>
+                        <li>
+                            <a href="tel:554734048600" target="_blank">Telefone: (47) 3404-8600</a>
+                        </li>
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=5547988596472&text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank">Whatsapp: (47) 98859-6472</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h6>Localização</h6>
+                    <ul class="localization">
+                        <li>
+                            <a href="https://maps.app.goo.gl/KtyC6CxjkJLEp2Z38" target="_blank">
+                                Matriz (Itajaí/SC)
+                                <!-- <br>
+                                R. Bertolino Serpa, 501
+                                <br>
+                                Salseiros, Itajaí - SC
+                                <br>
+                                88311-547 -->
+                            </a>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28471.86480533537!2d-48.7557503!3d-26.872278!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df33b68b8e1041%3A0xeb386c6c49c62f38!2sAR%20Terminais!5e0!3m2!1spt-BR!2sbr!4v1715286124076!5m2!1spt-BR!2sbr" width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </li>
+                        <li>
+                            <a href="https://maps.app.goo.gl/JCjDqetEyReNze7k8" target="_blank">
+                                Filial (Navegantes/SC)
+                                <!-- <br>
+                                Rod. Ingo Hering, 5348
+                                <br>
+                                Volta Grande, Navegantes - SC
+                                <br>
+                                88375-000 -->
+                            </a>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28471.86480533537!2d-48.75575034332369!3d-26.872277999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8d3912b0fcdcf%3A0xd9f9b5e3df3279c1!2sAr%20Terminais%20-%20Filial%20Navegantes!5e0!3m2!1spt-BR!2sbr!4v1715286183603!5m2!1spt-BR!2sbr" width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h6>Redes Sociais</h6>
+                    <ul class="social-media">
+                        <li>
+                            <a href="https://www.instagram.com/arbrasil.operadorlogistico/" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/people/Ar-Terminais/100083366379742/" target="_blank">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/ar-brasil-logistica/mycompany/" target="_blank">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://api.whatsapp.com/send?phone=5547988596472&text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="footer">
+                <div class="info">
+                    &copy;2024 AR Brasil
+                </div>
+                <div class="info">
+                    Desenvolvido: Setor de Tecnologia da Informação (<a href="https://alisonmartinsss.github.io/Portfolio/" target="_blank">Alison Martins</a>)
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
         <script src="assets/js/script.js"></script>
     </body>
 </html>
