@@ -93,6 +93,7 @@ header {
 
         & img {
             width: 10%;
+            cursor: pointer;
         }
 
         & ul {
@@ -111,45 +112,6 @@ header {
                     color: #FFF;
                 }
             }
-
-            /* & li.dropdown {
-                position: relative;
-
-                & div.dropdown-box {
-                    display: none;
-                    position: absolute;
-                    padding-top: 1rem;
-                    left: 50%;
-                    transform: translateX(-50%);
-
-                    & ul {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0;
-                        background-color: #112266;
-                        border-radius: 5px;
-                        padding: 1rem;
-
-                        & li {
-                            padding: .5rem 0;
-
-                            & a {
-                                color: #FFF;
-                            }
-
-                            & a:hover {
-                                opacity: .8;
-                            }
-                        }
-                    }
-                }
-            }
-
-            & li.dropdown:hover {
-                & div.dropdown-box {
-                    display: block;
-                }
-            } */
         }
         
         & div.language {
@@ -333,7 +295,65 @@ main {
                 }
             }
 
-            & div.politics {
+            & div.certifications {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                & h6 {
+                    font-size: 1.7rem;
+                    font-weight: 400;
+                    color: #0C1430;
+                    cursor: default;
+                    text-align: center;
+                }
+
+                & div.box {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    & div.card-box {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        & div.card-text {
+                            width: 80%;
+                            & h5 {
+                                font-size: 1.5rem;
+                                font-weight: 400;
+                                color: #0C1430;
+                                cursor: default;
+                            }
+
+                            & p {
+                                font-size: 1.1rem;
+                                font-weight: 300;
+                                text-align: justify;
+                                color: #0C1430;
+                                cursor: default;
+                            }
+                        }
+
+                        & div.card-info {
+                            display: flex;
+                            justify-content: center;
+                            width: 20%;
+
+                            & a {
+                                display: flex;
+                                justify-content: center;
+                                & img {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* & div.politics {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
@@ -389,7 +409,7 @@ main {
                         cursor: default;
                     }
                 }
-            }
+            } */
         }
     }
 
@@ -764,6 +784,256 @@ footer {
 
             & a {
                 color: #0C1430;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+
+    header {
+        & nav {
+            & ul {
+                gap: 2rem;
+
+                & li {
+                    & a {
+                        padding: .4rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            & div.language {
+                gap: 1.8rem;
+
+                & a {
+                    padding: .4rem;
+                    font-size: 1rem;
+                }
+
+                & ul {
+
+                    & li {
+                        font-size: 1rem;
+                    }
+                }
+
+            }
+        }
+    }
+
+    main {
+        & section#banner {
+            z-index: 1;
+
+            & div.banner {
+                clip-path: polygon(74% 0, 100% 0, 100% 100%, 71% 100%);
+                z-index: 2;
+            }
+
+            & div.content {
+                z-index: 3;
+
+                & h6 {
+                    font-size: 1.5rem;
+                }
+
+                & p {
+                    font-size: 1rem;
+                }
+
+                & div.buttons {
+                    width: 90%;
+                    & button {
+                        width: 90%;
+                        padding: .4rem;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+
+        & section#about {
+            background-color: #C8D5EE;
+
+            & div.content {
+                & h6 {
+                    font-size: 1.8rem;
+                }
+
+                & div.text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+
+                    & p {
+                        font-size: 1rem;
+                    }
+                }
+
+                & div.mvv {
+                    & div.mvv-container {
+                        & div.mvv-box {
+                            & h6 {
+                                font-size: 1.5rem;
+                            }
+
+                            & p {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+
+                & div.politics {
+
+                    & div.box-text {
+                        & p {
+                            font-size: 1rem;
+                        }
+                    }
+
+                    & div.box {
+                        & ul {
+                            & li {
+                                font-size: 1rem;
+
+                                & p {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & section#structure {
+            background-color: #112266;
+
+            & div.content {
+                & h6 {
+                    font-size: 1.8rem;
+                }
+
+                & div.box {
+                    & div.structure {
+                        & h5 {
+                            font-size: 1.5rem;
+                        }
+
+                        & div.card {
+
+                            & div.card-box {
+
+                                & h6 {
+                                    font-size: 1.25rem;
+                                }
+
+                                & ul {
+                                    & li {
+                                        font-size: 1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & section#services {
+            & div.content {
+                & h6 {
+                    font-size: 1.8rem;
+                }
+
+                & div.box {
+                    & div.services {
+                        & ul {
+                            height: 650px;
+
+                            & li {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & section#contact {
+            height: 100vh;
+
+            & div.content {
+                & h6 {
+                    font-size: 1.8rem;
+                }
+
+                & div.box {
+                    & div.card-box {
+                        & div.text {
+
+                            & ul li a i,
+                            & a,
+                            & p {
+                                font-size: 1rem;
+                            }
+
+                            & ul li a i {
+                                font-size: 1.4rem;
+                            }
+                        }
+
+                        & div.form {
+                            & div.buttons {
+
+                                & button {
+                                    font-size: 1rem;
+                                }
+                            }
+
+                            & form {
+                                & div {
+                                    & label {
+                                        font-size: 1rem;
+                                    }
+
+                                    & input,
+                                    & input.file,
+                                    & textarea {
+                                        font-size: .9rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        & div.infos {
+            & div.footer-info {
+                & h6 {
+                    font-size: 1.5rem;
+                }
+
+                & ul {
+                    & li {
+                        & a {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        & div.footer {
+            & div.info {
+                font-size: 1rem;
             }
         }
     }
