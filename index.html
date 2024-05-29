@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -413,18 +410,6 @@ session_start();
                                         <textarea type="text" placeholder="Digite a sua mensagem" id="message_mensagem" required name="message_mensagem" rows="5"></textarea>
                                     </div>
                                     <button id="message_botao" type="submit">Enviar</button>
-                                    <?php
-                                        if (isset($_SESSION['message_message'])) {
-                                            echo '<b class="success">' . htmlspecialchars($_SESSION['message_message']) . '</b>';
-                                            unset($_SESSION['message_message']);
-                                        }
-                                    ?>
-                                    <?php
-                                        if (isset($_SESSION['error_message'])) {
-                                            echo '<b class="danger">' . htmlspecialchars($_SESSION['error_message']) . '</b>';
-                                            unset($_SESSION['error_message']);
-                                        }
-                                    ?>
                                 </form>
                                 <form id="form-curriculo" method="POST" action="assets/php/curriculo.php" enctype="multipart/form-data">
                                     <div>
@@ -449,18 +434,6 @@ session_start();
                                         "application/msword, application/pdf, image/*">
                                     </div>
                                     <button id="work_botao" type="submit">Enviar</button>
-                                    <?php
-                                        if (isset($_SESSION['message_curriculo'])) {
-                                            echo '<b class="success">' . htmlspecialchars($_SESSION['message_curriculo']) . '</b>';
-                                            unset($_SESSION['message_curriculo']);
-                                        }
-                                    ?>
-                                    <?php
-                                        if (isset($_SESSION['error_curriculo'])) {
-                                            echo '<b class="danger">' . htmlspecialchars($_SESSION['error_curriculo']) . '</b>';
-                                            unset($_SESSION['error_curriculo']);
-                                        }
-                                    ?>
                                 </form>                                
                             </div>
                         </div>
