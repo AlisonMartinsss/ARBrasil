@@ -1,87 +1,3 @@
-(function(){
-    emailjs.init("AJl0x9qzaO7ImRiAf");
-
-    document.getElementById('form-contato').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var nome = document.getElementById('nome').value;
-        var email = document.getElementById('email').value;
-        var telefone = document.getElementById('telefone').value;
-        var assunto = document.getElementById('assunto').value;
-        var mensagem = document.getElementById('mensagem').value;
-
-        if (!nome || !email || !telefone || !assunto || !mensagem) {
-            let retorno = document.getElementById('retorno');
-            retorno.classList.remove('success', 'danger')
-            retorno.classList.add('warning')
-            retorno.textContent = 'Por favor, preencha todos os campos.'
-            return;
-        }
-
-        emailjs.sendForm('service_gl2kdwn', 'template_xnhgcdh', this)
-            .then(function() {
-                let retorno = document.getElementById('retorno');
-                retorno.classList.remove('warning', 'danger')
-                retorno.classList.add('success')
-                retorno.textContent = 'Mensagem enviada com sucesso!'
-                document.getElementById('botao').style.display = 'none';
-                document.getElementById('nome').setAttribute('disabled', 'disabled');
-                document.getElementById('email').setAttribute('disabled', 'disabled');
-                document.getElementById('telefone').setAttribute('disabled', 'disabled');
-                document.getElementById('assunto').setAttribute('disabled', 'disabled');
-                document.getElementById('mensagem').setAttribute('disabled', 'disabled');
-                
-            }, function(error) {
-                let retorno = document.getElementById('retorno');
-                retorno.classList.remove('warning', 'success')
-                retorno.classList.add('danger')
-                retorno.textContent = 'Erro ao enviar a mensagem!'
-            });
-    });
-})();
-
-(function(){
-    emailjs.init("AJl0x9qzaO7ImRiAf");
-
-    document.getElementById('form-curriculo').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var nome = document.getElementById('nome').value;
-        var email = document.getElementById('email').value;
-        var telefone = document.getElementById('telefone').value;
-        var assunto = document.getElementById('assunto').value;
-        var curriculo = document.getElementById('curriculo').value;
-
-        if (!nome || !email || !telefone || !assunto || !curriculo) {
-            let retorno = document.getElementById('retorno');
-            retorno.classList.remove('success', 'danger')
-            retorno.classList.add('warning')
-            retorno.textContent = 'Por favor, preencha todos os campos.'
-            return;
-        }
-
-        emailjs.sendForm('service_gl2kdwn', 'template_mdm2gdc', this)
-            .then(function() {
-                let retorno = document.getElementById('retorno');
-                retorno.classList.remove('warning', 'danger')
-                retorno.classList.add('success')
-                retorno.textContent = 'Currículo enviado com sucesso!'
-                document.getElementById('botao').style.display = 'none';
-                document.getElementById('nome').setAttribute('disabled', 'disabled');
-                document.getElementById('email').setAttribute('disabled', 'disabled');
-                document.getElementById('telefone').setAttribute('disabled', 'disabled');
-                document.getElementById('assunto').setAttribute('disabled', 'disabled');
-                document.getElementById('curriculo').setAttribute('disabled', 'disabled');
-                
-            }, function(error) {
-                let retorno = document.getElementById('retorno');
-                retorno.classList.remove('warning', 'success')
-                retorno.classList.add('danger')
-                retorno.textContent = 'Erro ao enviar o currículo!'
-            });
-    });
-})();
-
 function scroll() {
     var position = window.scrollY;
     var div = document.querySelector(".top-fixed");
@@ -149,4 +65,17 @@ btnCurriculo2.addEventListener("click", function() {
     curriculo.classList.add("active");
     form.style.display = "none";
     formCurriculo.style.display = "flex";
-  });
+});
+
+var pt = document.querySelector("#pt");
+var en = document.querySelector("#en");
+
+pt.addEventListener("click", function() {
+    en.classList.remove("active");
+    pt.classList.add("active");
+});
+
+en.addEventListener("click", function() {
+    pt.classList.remove("active");
+    en.classList.add("active");
+});

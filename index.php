@@ -1,7 +1,10 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>AR Brasil </title>
+        <title>AR Brasil - Operador Logístico</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
@@ -23,37 +26,44 @@
         </div>
         <header>
             <nav>
-                <img src="assets/images/logo.png" alt="Logo da Empresa" onclick="window.location='#'">
-                <ul>
-                    <li>
-                        <a href="#about">Sobre Nós</a>
-                    </li>
-                    <li>
-                        <a href="#structure">Estruturas</a>
-                    </li>
-                    <li>
-                        <a href="#services">Soluções</a>
-                    </li>
-                    <li>
-                        <a href="#contact" id="btnQuestion">Contatos</a>
-                    </li>
-                    <li>
-                        <a href="#contact" id="btnCurriculo">Trabalhe Conosco</a>
-                    </li>
-                </ul>
-                <div class="language">
-                    <a href="https://ar.escalasoft.com.br/view/estrutura/login.php" target="_blank">
-                        <i class="fa-regular fa-circle-user"></i>
-                        Portal do Cliente
-                    </a>
+                <img src="assets/images/logo_completa.png" alt="Logo da Empresa" onclick="window.location='#'">
+                <div class="menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="navbar">
                     <ul>
-                        <li class="active">
-                            PT
+                        <li>
+                            <a href="#about">Sobre Nós</a>
                         </li>
                         <li>
-                            EN
+                            <a href="#structure">Estruturas</a>
+                        </li>
+                        <li>
+                            <a href="#services">Soluções</a>
+                        </li>
+                        <li>
+                            <a href="#contact" id="btnQuestion">Contatos</a>
+                        </li>
+                        <li>
+                            <a href="#contact" id="btnCurriculo">Trabalhe Conosco</a>
                         </li>
                     </ul>
+                    <div class="language">
+                        <a href="https://ar.escalasoft.com.br/view/estrutura/login.php" target="_blank">
+                            <i class="fa-regular fa-circle-user"></i>
+                            Portal do Cliente
+                        </a>
+                        <ul>
+                            <li class="active" id="pt">
+                                PT
+                            </li>
+                            <li id="en">
+                                EN
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -67,7 +77,7 @@
                     <h6>Conectar para seguir em movimento.</h6>
                     <p>Oferecemos soluções logísticas ágeis e integradas, permitindo que a sua empresa supere desafios e se adeque   às demandas do mercado.</p>
                     <div class="buttons">
-                        <button>Entre em contato agora</button>
+                        <a href="https://api.whatsapp.com/send?phone=5547988596472&amp;text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank">Entre em contato agora</a>
                     </div>
                 </div>
                 
@@ -381,54 +391,77 @@
                                     <button class="active" id="question">Envie uma mensagem</button>
                                     <button id="curriculo">Trabalhe Conosco</button>
                                 </div>
-                                <form id="form-contato" method="POST">
+                                <form id="form-contato" method="POST" action="assets/php/mensagem.php">
                                     <div>
-                                        <label for="">Nome</label>
-                                        <input type="text" placeholder="Digite o seu nome" id="nome" name="nome">
+                                        <label for="message_nome">Nome</label>
+                                        <input type="text" placeholder="Digite o seu nome" id="message_nome" required name="message_nome">
                                     </div>
                                     <div>
-                                        <label for="">E-mail</label>
-                                        <input type="text" placeholder="Digite o seu e-mail" id="email" name="email">
+                                        <label for="message_email">E-mail</label>
+                                        <input type="text" placeholder="Digite o seu e-mail" id="message_email" required name="message_email">
                                     </div>
                                     <div>
-                                        <label for="">Telefone</label>
-                                        <input type="text" placeholder="Digite o seu telefone" id="telefone" name="telefone">
+                                        <label for="message_telefone">Telefone</label>
+                                        <input type="text" placeholder="Digite o seu telefone" id="message_telefone" required name="message_telefone">
                                     </div>
                                     <div>
-                                        <label for="">Assunto</label>
-                                        <input type="text" placeholder="Digite o assunto" id="assunto" name="assunto">
+                                        <label for="message_assunto">Assunto</label>
+                                        <input type="text" placeholder="Digite o assunto" id="message_assunto" required name="message_assunto">
                                     </div>
                                     <div>
-                                        <label for="">Mensagem</label>
-                                        <textarea type="text" placeholder="Digite a sua mensagem" id="mensagem" name="mensagem" rows="5"></textarea>
+                                        <label for="message_mensagem">Mensagem</label>
+                                        <textarea type="text" placeholder="Digite a sua mensagem" id="message_mensagem" required name="message_mensagem" rows="5"></textarea>
                                     </div>
-                                    <button id="botao" type="submit">Enviar</button>
-                                    <b id="retorno"></b>
+                                    <button id="message_botao" type="submit">Enviar</button>
+                                    <?php
+                                        if (isset($_SESSION['message_message'])) {
+                                            echo '<b class="success">' . htmlspecialchars($_SESSION['message_message']) . '</b>';
+                                            unset($_SESSION['message_message']);
+                                        }
+                                    ?>
+                                    <?php
+                                        if (isset($_SESSION['error_message'])) {
+                                            echo '<b class="danger">' . htmlspecialchars($_SESSION['error_message']) . '</b>';
+                                            unset($_SESSION['error_message']);
+                                        }
+                                    ?>
                                 </form>
-                                <form id="form-curriculo" method="POST" enctype="multipart/form-data">
+                                <form id="form-curriculo" method="POST" action="assets/php/curriculo.php" enctype="multipart/form-data">
                                     <div>
-                                        <label for="">Nome</label>
-                                        <input type="text" placeholder="Digite o seu nome" id="nome" name="nome">
+                                        <label for="work_nome">Nome</label>
+                                        <input type="text" placeholder="Digite o seu nome" id="work_nome" required name="work_nome">
                                     </div>
                                     <div>
-                                        <label for="">E-mail</label>
-                                        <input type="text" placeholder="Digite o seu e-mail" id="email" name="email">
+                                        <label for="work_email">E-mail</label>
+                                        <input type="text" placeholder="Digite o seu e-mail" id="work_email" required name="work_email">
                                     </div>
                                     <div>
-                                        <label for="">Telefone</label>
-                                        <input type="text" placeholder="Digite o seu telefone" id="telefone" name="telefone">
+                                        <label for="work_telefone">Telefone</label>
+                                        <input type="text" placeholder="Digite o seu telefone" id="work_telefone" required name="work_telefone">
                                     </div>
                                     <div>
-                                        <label for="">Cargo</label>
-                                        <input type="text" placeholder="Digite o cargo" id="cargo" name="cargo">
+                                        <label for="work_cargo">Cargo</label>
+                                        <input type="text" placeholder="Digite o cargo" id="work_cargo" required name="work_cargo">
                                     </div>
                                     <div>
-                                        <label for="">Currículo</label>
-                                        <input type="file" class="file" id="curriculo" name="curriculo">
+                                        <label for="work_curriculo">Currículo</label>
+                                        <input type="file" class="file" id="work_curriculo" required name="work_curriculo" accept=
+                                        "application/msword, application/pdf, image/*">
                                     </div>
-                                    <button id="botao" type="submit">Enviar</button>
-                                    <b id="retorno"></b>
-                                </form>
+                                    <button id="work_botao" type="submit">Enviar</button>
+                                    <?php
+                                        if (isset($_SESSION['message_curriculo'])) {
+                                            echo '<b class="success">' . htmlspecialchars($_SESSION['message_curriculo']) . '</b>';
+                                            unset($_SESSION['message_curriculo']);
+                                        }
+                                    ?>
+                                    <?php
+                                        if (isset($_SESSION['error_curriculo'])) {
+                                            echo '<b class="danger">' . htmlspecialchars($_SESSION['error_curriculo']) . '</b>';
+                                            unset($_SESSION['error_curriculo']);
+                                        }
+                                    ?>
+                                </form>                                
                             </div>
                         </div>
                     </div>
@@ -535,14 +568,13 @@
             </div>
             <div class="footer">
                 <div class="info">
-                    &copy;2024 AR Brasil
+                    &copy; 2024 AR Brasil - Operador Logístico
                 </div>
                 <div class="info">
-                    Desenvolvido pelo Setor de Tecnologia da Informação (<a href="https://alisonmartinsss.github.io/Portfolio/" target="_blank">Alison Martins</a>)
+                    Desenvolvido pelo Setor de TIC
                 </div>
             </div>
         </footer>
-        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
         <script src="assets/js/script.js"></script>
     </body>
 </html>
